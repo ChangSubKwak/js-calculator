@@ -1,0 +1,25 @@
+{
+  "name": "js-calculator",
+  "version": "1.0.0",
+  "description": "<br/>\r <br/>",
+  "main": ".eslintrc.js",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  },
+  "devDependencies": {
+    "cypress": "^7.7.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChangSubKwak/js-calculator.git"
+  },
+  "author": "ChangSubKwak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChangSubKwak/js-calculator/issues"
+  },
+  "homepage": "https://github.com/ChangSubKwak/js-calculator#readme"
+}
