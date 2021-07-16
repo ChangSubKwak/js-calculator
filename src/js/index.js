@@ -1,30 +1,26 @@
-// console.log("This is index.js file");
-
 let totalView = '';
 let totalData = 0;
-// const numList = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
-// const opList  = [ '+', '-', 'X', '/' ];
 
-let test;
+document.addEventListener("click", ({ target }) => {
+  // 계산기 버튼 이외 다른 곳 클릭 이벤트 버리기
+  if (!["digit", "modifier", "operation"].includes(target.className)) {
+    return;
+  }
 
-document.addEventListener("click", ({ target }) => { 
   const val = target.innerText;
-	console.log(val);
-
-	if (val === "AC") {
-		totalView = '';
-		totalData = 0;
-		document.querySelector("#total").textContent = 0;
-		return;
-	}
+  if (val === "AC") {
+    totalView = '';
+    totalData = 0;
+    document.querySelector("#total").textContent = 0;
+    return;
+  }
 
   totalView += val;
+  expression = totalView.split(/(\+|-|X|\/)|=/);
 
   if (val === '=') {
     totalView = totalView.substr(0, totalView.length - 1);
-    expression = totalView.split(/(\+|-|X|\/)/);
-    // expression = expression.substr(0, expression.length - 1);
-    
+    // expression = totalView.split(/(\+|-|X|\/)/);
     console.log(expression);
     if (expression[1] === '+') {
       totalView = Number(expression[0]) + Number(expression[2]);
@@ -39,5 +35,18 @@ document.addEventListener("click", ({ target }) => {
       totalView = Math.floor(Number(expression[0]) / Number(expression[2]));
     }
   }
-  document.querySelector("#total").textContent = totalView;
+  
+  document.querySelector("#total").innerText = totalView;
+
+  if (expression.length >= 1) {
+    const re = /^\d*$/;
+
+    expression.forEach(element => {
+      if (re.test(element) && element.length >= 4) {
+        window.alert("숫자 자리수가 3을 넘었어요."); 
+        totalView = totalView.substr(0, totalView.length - 1);
+        document.querySelector("#total").textContent = totalView;
+      }
+    });
+  }
 });
